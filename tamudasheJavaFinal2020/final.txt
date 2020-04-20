@@ -1,0 +1,120 @@
+Complete any one project with report from the following two projects in Java.
+All java files and report (in pdf) should be in one zip file and submit it on canvas.
+
+Project 1: Finding the size of the maximum clique in a given undirected graph.
+
+Input to the problem is an undirected graph in adjacency matrix format.
+
+Output of the program is an integer, which is the size of the max clique in the given graph.
+The following algorithm was discussed details in the class. You have to implement the algorithm in Java.
+Your project need a graph class. You can either use the graph class that you implemented for your midterm project or you can use the graph class that I describe in the review class after the midterm project.
+In essence you need to implement the following method in Java.
+
+It takes 2 lists: A and B, one index which is -1 initially, k is a positive integer.
+
+Bool CLIQUE(A, B, index, k)
+
+Begin
+
+   If A contains k vertices and these vertices creates a clique then return yes
+
+   index is increased such that index is minimum and B[index] is neighbor to all vertices of A
+
+   If such B[index] does not exist return no
+
+     If (sizeof(A) + (n-index)) less than k return no
+
+     Let A’ be a deep copy of A by dynamic allocation
+
+     Insert B[index] in A’
+
+     Bool firstPart = CLIQUE(A’, B, index,k)
+
+     Delete A’
+
+     If firstPart == yes return yes          
+
+     secondPart = CLIQUE(A, B, index,k)
+
+     If secondPart == yes return yes
+
+     Return no
+
+End
+
+The above project can be called with the value of k from 1 to n, where n is the number of vertices in the graph. Let the algorithm return "no" for k = m, then the max clique size of the graph is m-1.
+
+In addition to java code to solve this problem, you have to write a report. Your report contains the following.
+
+    An example of a graph. The adjacency matrix that represent the graph. Your graph should contain at least 10 vertices and 25 edges.
+    Let the max clique size of your graph is m-1. Describe the recursive tree from your code for k = m. Describe the complexity of the algorithm CLIQUE by some recursive relations.
+    How do you solve this recurrence relation? (bonus question)
+
+_____________________________________________________________________________________________________________________________________________________________________________________________________
+
+Project 2: Is the given graph a Hamiltonian?
+
+Input to the program is an undirected graph G in adjacency matrix format.
+
+Output can be either Yes, if G is Hamiltonian or no.
+
+ 
+
+The following algorithm was discussed details in the class. You have to implement the algorithm in Java.
+
+Your project need a graph class.
+
+You can either use the graph class that you implemented for your midterm project or you can use the graph class that I describe in the review class after the midterm project.
+
+ 
+
+Parameter to the algorithm: a list of vertices :A
+
+The algorithm is called with A=[v0]
+
+The output of the algorithm is either yes or no
+
+ 
+
+Bool IsHamiltonian(A)
+
+            Let v_first and v_last be the first and last vertex in A
+
+            If sizeof(A) == n and v_first and v_last are neighbor, then return yes
+
+            Set B = neighbor(v_last)
+
+            If B is empty return no
+
+            Set C = B – A // set minus operation considering A is a set
+
+            If C is empty return no
+
+            For each element v in C
+
+                        Bool result = IsHamiltonian(A with v)
+
+                        If result == yes then return yes          
+
+            End For
+
+            Return no
+
+End
+
+ 
+
+In addition to java code to solve this problem, you have to write a report. Your report contains the following.
+
+    1. An example of a graph. The adjacency matrix that represent the graph. Your graph should contain at least 7 vertices and 25 edges.
+    2. Describe the recursive tree from your code. Describe the complexity of the algorithm IsHamiltonian() by some recursive relations.
+    3. How do you solve this recurrence relation? (Bonus Question)
+
+
+0,1,2,3,4,5
+010101
+101011
+010011
+100010
+011101
+111010
